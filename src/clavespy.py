@@ -215,10 +215,14 @@ def restaura_registro_borrado(codigo='', clave=''):
 
 
 def barre_registros_borrados(clave=''):
-    reg=leer_bd(clave)
+    cod=MASCARACODIGO
+    registros=leer_bd(clave)
     res=[]
-    [res.append(r) for r in reg if not r.get_borrado()]
-    guardar_bd(registros=reg, clave=clave)
+    for r in [reg for reg in registros if not reg.get_borrado()]:
+        r.set_codigo(cod)
+        res.append(r)
+        cod=str(int(cod)+1).zfill(len(cod))
+    guardar_bd(registros=res, clave=clave)
 
 
 def imprime_titulo():

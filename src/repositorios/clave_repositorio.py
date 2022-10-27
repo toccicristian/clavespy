@@ -28,12 +28,11 @@ def autenticar_clave(clave=''):
         return False
 
     try:
-        with open(normpath(expanduser(
-            config.obtiene_configuracion().temp)),'r') as ar_r:
-            if ar_r.read() == herramientas.encriptacion.hashear(clave):
-                os.remove(normpath(expanduser(
-                    config.obtiene_configuracion().temp)))
-                return True
+        ar_r=open(normpath(expanduser(config.obtiene_configuracion().temp)))
+        if ar_r.read() == herramientas.encriptacion.hashear(clave):
+            ar_r.close()
+            os.remove(normpath(expanduser(config.obtiene_configuracion().temp)))
+            return True
     except UnicodeDecodeError:
         os.remove(normpath(expanduser(config.obtiene_configuracion().temp)))
         return False
