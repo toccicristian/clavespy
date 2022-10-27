@@ -1,0 +1,1 @@
+ARCHIVO_CONFIGURACION='config'
