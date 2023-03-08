@@ -2,7 +2,7 @@ import tkinter as tk
 from os.path import normpath,expanduser
 import repositorios.configuracion_repositorio as conf
 import controladores.v_agregar_controlador
-
+import constantes.rutas as rutas
 
 def mostrar(toplevel, width='500', height='400', clavebd=''):
     fuente=conf.obtiene_configuracion().fuente
@@ -14,7 +14,7 @@ def mostrar(toplevel, width='500', height='400', clavebd=''):
 
     f_titulo=tk.Frame(v)
 
-    img_titulo_agregar=tk.PhotoImage(file=normpath(expanduser('./res/note-64px-Ongicon.png')))
+    img_titulo_agregar=tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_NOTA)))
     l_img_titulo_agregar=tk.Label(f_titulo, image=img_titulo_agregar)
     l_img_titulo_agregar.image=img_titulo_agregar
     l_titulo_agregar=tk.Label(f_titulo, text='Agregar a BD', font=fuente+' '+tam_fuente)
@@ -45,12 +45,12 @@ def mostrar(toplevel, width='500', height='400', clavebd=''):
                     font=(fuente+' ' +tam_fuente)
                     )
     f_botones=tk.Frame(v, width=f'{int(int(width)/2)}')
-    img_b_agregar = tk.PhotoImage(file=normpath(expanduser('./res/add-64px-Fuzzee.png')))
+    img_b_agregar = tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_AGREGAR)))
     b_agregar=tk.Button(f_botones,image=img_b_agregar,
                        command = lambda : controladores.v_agregar_controlador.agregar_registro(
                            v, e_nombre, e_cuit, e_detalle, e_clave, clavebd))
     b_agregar.image=img_b_agregar
-    img_b_cancelar=tk.PhotoImage(file=normpath(expanduser('./res/sign-out-64px-Pixel_perfect.png')))
+    img_b_cancelar=tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_SIGNOUT)))
     b_cancelar=tk.Button(f_botones, image=img_b_cancelar,command = lambda : v.destroy())
     b_cancelar.image=img_b_cancelar
     #BINDEOS
