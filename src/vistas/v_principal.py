@@ -6,6 +6,7 @@ from os.path import normpath,expanduser
 from herramientas.texto import lista_a_parrafo as l_a_p
 import tkinter as tk
 from tkinter import ttk
+import constantes.rutas as rutas
 
 
 def mostrar(width='1024', height='600', clave=''):
@@ -69,16 +70,16 @@ def mostrar(width='1024', height='600', clave=''):
     rmb_sel_clave = tk.Menu(e_sel_clave, tearoff=0)
 
     f_botones=tk.Frame(f_panel_inferior,width=f'{int(int(width)/2)}')
-    img_b_agregar = tk.PhotoImage(file=normpath(expanduser('./res/add-64px-Fuzzee.png')))
+    img_b_agregar = tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_AGREGAR)))
     b_agregar=tk.Button(f_botones,image=img_b_agregar,
                         command = lambda : controladores.v_principal_controlador.agregar_registro(v, clave))
-    img_b_borrar = tk.PhotoImage(file=normpath(expanduser('./res/delete-64px-Fuzzee.png')))
+    img_b_borrar = tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_DELETE)))
     b_borrar=tk.Button(f_botones,image=img_b_borrar,
                        command = lambda : controladores.v_principal_controlador.borrar_registro(
                            v, tview_resultados,clave))
-    img_b_swap = tk.PhotoImage(file=normpath(expanduser('./res/refresh-64px-AB_Design.png')))
+    img_b_swap = tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_REFRESH)))
     b_swap=tk.Button(f_botones,image=img_b_swap)
-    img_b_barrer = tk.PhotoImage(file=normpath(expanduser('./res/broom-64px-Smashicons.png')))
+    img_b_barrer = tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_WIPE)))
     b_barrer=tk.Button(f_botones,image=img_b_barrer)
 
     # BINDEOS

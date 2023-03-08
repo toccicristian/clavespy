@@ -2,6 +2,7 @@ import tkinter as tk
 import controladores.v_login_controlador
 import repositorios.configuracion_repositorio as conf
 import modelos.tooltip_modelo
+import constantes.rutas as rutas
 from os.path import normpath, expanduser
 
 
@@ -22,21 +23,21 @@ def mostrar(width='450', height='280'):
     v.geometry(f'{width}x{height}')
     v.resizable(width=False, height=False)
     marco_titulo=tk.Frame(v)
-    img_titulo=tk.PhotoImage(file=normpath(expanduser('./res/user-64px-Freepik.png')))
+    img_titulo=tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_USER)))
     label_img_titulo=tk.Label(marco_titulo, image=img_titulo)
     label_titulo=tk.Label(marco_titulo, text='LOGIN', font=(fuente+' ' +str(int(int(width)/(int(height)/20)))))
     marco_entry=tk.Frame(v)
     entry_pass=tk.Entry(marco_entry, show='*', width=f'{int(int(width)/35)}',
                         font=(fuente+' ' +str(int(int(width)/(int(height)/20)))))
     img_boton_mostrar_on=tk.PhotoImage(
-        file=normpath(expanduser('./res/eye-64px-Freepik.png')))
+        file=normpath(expanduser(rutas.ICONO_SEEPASS)))
     img_boton_mostrar_off=tk.PhotoImage(
-        file=normpath(expanduser('./res/hidden-64px-Freepik.png')))
+        file=normpath(expanduser(rutas.ICONO_HIDEPASS)))
 
     marco_botones=tk.Frame(v)
     img_boton_login=tk.PhotoImage(
-        file=normpath(expanduser('./res/enter-64px-Pixel_perfect.png')))
-    img_boton_logout=tk.PhotoImage(file=normpath(expanduser('./res/sign-out-64px-Pixel_perfect.png')))
+        file=normpath(expanduser(rutas.ICONO_ENTRAR)))
+    img_boton_logout=tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_SIGNOUT)))
     boton_mostrar_pass=tk.Button(marco_entry,image=img_boton_mostrar_on,
                                  command = lambda : visibilidad_password(
                                      entry_pass, boton_mostrar_pass,

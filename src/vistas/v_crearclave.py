@@ -3,6 +3,7 @@ from os.path import normpath, expanduser
 import repositorios.configuracion_repositorio as conf
 import modelos.tooltip_modelo
 import controladores.v_crearclave_controlador
+import constantes.rutas as rutas
 
 
 def contrasta_claves(entry1,entry2,boton_aceptar):
@@ -20,7 +21,7 @@ def mostrar(width='500', height='450'):
     v.geometry(f'{width}x{height}')
     v.resizable(width=False, height=False)
     frame_titulo=tk.Frame(v)
-    img_titulo=tk.PhotoImage(file=normpath(expanduser('./res/password-64px-Freepik.png')))
+    img_titulo=tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_PASSWORD)))
     label_titulo=tk.Label(frame_titulo,
                           text='CLAVE NO ENCONTRADA',
                           font=(fuente+' ' +str(int(int(width)/(int(height)/20)))))
@@ -42,8 +43,8 @@ def mostrar(width='500', height='450'):
                            font=(fuente+' ' +str(int(int(width)/(int(height)/20)))))
 
     frame_botones=tk.Frame(v)
-    img_boton_cancelar=tk.PhotoImage(file=normpath(expanduser('./res/sign-out-64px-Pixel_perfect.png')))
-    img_boton_aceptar=tk.PhotoImage(file=normpath(expanduser('./res/check-64px-Hqrloveq.png')))
+    img_boton_cancelar=tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_SIGNOUT)))
+    img_boton_aceptar=tk.PhotoImage(file=normpath(expanduser(rutas.ICONO_CHECK)))
     boton_cancelar=tk.Button(frame_botones, image=img_boton_cancelar,
                              command = lambda : controladores.v_crearclave_controlador.cancelar(v))
     boton_aceptar=tk.Button(frame_botones, image=img_boton_aceptar, state='disabled',
