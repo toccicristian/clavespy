@@ -101,6 +101,15 @@ def busca_registro_por_cuit(criterio='',clave='', borrados=False):
     return res
 
 
+def busca_registro_por_codigo(criterio='',clave='',borrados=False):
+    bd=leer_bd(clave)
+    res=[]
+    for i in bd:
+        if i.codigo == str(criterio).zfill(len(conf.busca_parametro("MASCARA_CODIGO"))):
+            res.append(i)
+    return res[0]
+
+
 def intercambia_dos_registros(codigo1='',codigo2='',clave=''):
     bd=leer_bd(clave)
 
