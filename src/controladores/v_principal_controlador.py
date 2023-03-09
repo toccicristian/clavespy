@@ -35,9 +35,9 @@ def actualiza_entry(entry,texto):
 def detalla_elemento(tview,e_nombre,e_cuit,e_detalle,e_clave,clave):
     if not tview.selection():
         return False
-    actualiza_entry(e_nombre,f'{tview.item(tview.focus())["values"][1]}')
-    actualiza_entry(e_cuit,f'{tview.item(tview.focus())["values"][2]}')
-    actualiza_entry(e_detalle,f'{tview.item(tview.focus())["values"][3]}')
+    actualiza_entry(e_nombre,reg_repo.busca_registro_por_codigo(tview.item(tview.focus())["values"][0],clave).nombre)
+    actualiza_entry(e_cuit,reg_repo.busca_registro_por_codigo(tview.item(tview.focus())["values"][0],clave).cuit)
+    actualiza_entry(e_detalle,reg_repo.busca_registro_por_codigo(tview.item(tview.focus())["values"][0],clave).detalle)
     actualiza_entry(e_clave,reg_repo.busca_registro_por_codigo(tview.item(tview.focus())["values"][0],clave).clave)
 
 
