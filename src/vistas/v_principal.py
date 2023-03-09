@@ -98,7 +98,7 @@ def mostrar(width='1024', height='600', clave=''):
                     e_cuit, tview_resultados, clave))
     tview_resultados.bind('<<TreeviewSelect>>',
                           lambda event : controladores.v_principal_controlador.detalla_elemento(
-        tview_resultados,e_sel_nombre,e_sel_cuit,e_sel_detalle,e_sel_clave))
+        tview_resultados,e_sel_nombre,e_sel_cuit,e_sel_detalle,e_sel_clave,clave))
 
     #RMB EN E_SEL_NOMBRE
     rmb_sel_nombre.add_command(label='Copiar - Ctrl+c',

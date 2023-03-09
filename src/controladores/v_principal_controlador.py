@@ -32,13 +32,13 @@ def actualiza_entry(entry,texto):
     entry.configure(state='readonly')
 
 
-def detalla_elemento(tview,e_nombre,e_cuit,e_detalle,e_clave):
+def detalla_elemento(tview,e_nombre,e_cuit,e_detalle,e_clave,clave):
     if not tview.selection():
         return False
     actualiza_entry(e_nombre,f'{tview.item(tview.focus())["values"][1]}')
     actualiza_entry(e_cuit,f'{tview.item(tview.focus())["values"][2]}')
     actualiza_entry(e_detalle,f'{tview.item(tview.focus())["values"][3]}')
-    actualiza_entry(e_clave,f'{tview.item(tview.focus())["values"][4]}')
+    actualiza_entry(e_clave,reg_repo.busca_registro_por_codigo(tview.item(tview.focus())["values"][0],clave).clave)
 
 
 def copiapega_menu(event, menu):
