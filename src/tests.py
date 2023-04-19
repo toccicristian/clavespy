@@ -147,4 +147,4 @@ def test_ventana_crear_clave():
 # test_clave_repositorio_autenticar_clave()
 # test_registros_repositorio()
 # test_ventana_login()
-test_ventana_crear_clave()
+# test_ventana_crear_clave()
