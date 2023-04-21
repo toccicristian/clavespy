@@ -12,9 +12,12 @@ def leer_bd(clave=''):
         return registros
     encript.desencriptar_ar(normpath(expanduser(conf.obtiene_configuracion().sysbd)),
                     encript.hashear(clave),normpath(expanduser(conf.obtiene_configuracion().temp)))
-    ar_r=open(normpath(expanduser(conf.obtiene_configuracion().temp)),'r', encoding='utf-8')
-    regdict_list=json.load(ar_r)
-    ar_r.close()
+    with open(normpath(expanduser(conf.obtiene_configuracion().temp)),'r',encoding='utf-8') as ar_r:
+        try:
+            regdict_list=json.load(ar_r)
+        except UnicodeDecodeError:
+            os.remove(normpath(expanduser(conf.obtiene_configuracion().temp)))
+            return registros
     os.remove(normpath(expanduser(conf.obtiene_configuracion().temp)))
     for r in regdict_list:
         registro=modelos.registro_modelo.Registro()
