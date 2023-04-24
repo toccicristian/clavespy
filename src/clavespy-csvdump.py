@@ -36,7 +36,7 @@ registros=repositorios.registros_repositorio.leer_bd(clave=h_argumentos.busca_ar
 
 if h_argumentos.existe_argumento(argumentos=sys.argv,argumento='-v'):
   for reg in [r for r in registros if not r.borrado]:
-    print(f'"{reg.cuit[-1::]}";{reg.cuit};{reg.nombre};"{reg.clave}";"{reg.detalle}')
+    print(f'"{reg.cuit[-1::]}";{reg.cuit};{reg.nombre};"{reg.clave}";"{reg.detalle}"')
   sys.exit()
 
 for reg in [r for r in registros if not r.borrado]:
