@@ -20,11 +20,11 @@ def mostrar(width='1024', height='600', clave=''):
     f_busqueda=tk.Frame(v)
     l_nombre=tk.Label(f_busqueda,text='Nombre:', font=(fuente+' ' +tam_fuente))
     e_nombre=tk.Entry(f_busqueda,
-                      width=f'{int(int(width)/50)}',
+                      width=f'{int(int(width)/35)}',
                       font=(fuente+' ' +tam_fuente))
     l_cuit=tk.Label(f_busqueda, text='CUIT:', font=(fuente+' ' +tam_fuente))
     e_cuit=tk.Entry(f_busqueda,
-                    width=f'{int(int(width)/35)}',
+                    width=f'{int(int(width)/90)}',
                     font=(fuente+' ' +tam_fuente))
 
     f_resultados=tk.Frame(v)
@@ -143,7 +143,7 @@ def mostrar(width='1024', height='600', clave=''):
     # PACK
     f_busqueda.pack(side=tk.TOP,pady=(20,10))
     l_nombre.pack(side=tk.LEFT)
-    e_nombre.pack(side=tk.LEFT)
+    e_nombre.pack(side=tk.LEFT, padx=(0,75))
     l_cuit.pack(side=tk.LEFT, padx=(10,0))
     e_cuit.pack(side=tk.LEFT)
     f_resultados.pack(side=tk.TOP,padx=(5,5))
