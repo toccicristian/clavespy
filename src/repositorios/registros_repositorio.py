@@ -10,6 +10,25 @@ def leer_bd(clave=''):
     registros=[]
     if not isfile(normpath(expanduser(conf.obtiene_configuracion().sysbd))):
         return registros
+
+    bd = encript.desencriptar_ram( normpath(expanduser(conf.obtiene_configuracion().sysbd)),
+                    encript.hashear(clave))
+    try:
+        regdict_list = json.loads(bd)
+    except UnicodeDecodeError:
+        return registros
+
+    for r in regdict_list:
+        registro=modelos.registro_modelo.Registro()
+        registro.__dict__=r
+        registros.append(registro)
+    return registros
+
+
+def __deprecated_leer_bd(clave=''):    #DEPRECATED
+    registros=[]
+    if not isfile(normpath(expanduser(conf.obtiene_configuracion().sysbd))):
+        return registros
     encript.desencriptar_ar(normpath(expanduser(conf.obtiene_configuracion().sysbd)),
                     encript.hashear(clave),normpath(expanduser(conf.obtiene_configuracion().temp)))
     with open(normpath(expanduser(conf.obtiene_configuracion().temp)),'r',encoding='utf-8') as ar_r:
